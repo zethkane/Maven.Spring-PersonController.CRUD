@@ -17,22 +17,22 @@ public class PersonService {
     }
 
     public Person show(Long id) {
-        return repository.findById(id).get();
+        return repository.findOne(id);
     }
 
-    public Person create(Person baker) {
-        return repository.save(baker);
+    public Person create(Person p) {
+        return repository.save(p);
     }
 
-    public Person update(Long id, Person newBakerData) {
-        Person originalBaker = repository.findById(id).get();
-        originalPerson.setName(newBakerData.getName());
-        originalBaker.setSpecialty(newBakerData.getSpecialty());
-        return repository.save(originalBaker);
+    public Person update(Long id, Person newPersonData) {
+        Person originalPerson = repository.findOne(id);
+        originalPerson.setFirstName(newPersonData.getFirstName());
+        originalPerson.setLastName(newPersonData.getLastName());
+        return repository.save(originalPerson);
     }
 
     public Boolean delete(Long id) {
-        repository.deleteById(id);
+        repository.delete(id);
         return true;
     }
 }
